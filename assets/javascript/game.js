@@ -3,7 +3,7 @@ window.onload=function() {
 
 // Arrays and variables
 
-var alphabets = ["a", "b", "c","d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y" "z",]
+var alphabets = ["a", "b", "c","d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y","z"]
 var psychicLetter;
 var userLetter;
 var wins = 0;
@@ -26,14 +26,13 @@ var userLetter = document.getElementById("guessesSofar");
 
  //add +1 to wincount span tag//
  function winsFunction(wins){
- // double quote vs single?
- 	var elWins = document.getElementById('Wins');
- 	elWins.innerHTML = wins;
+ 	var elwins = document.getElementById("wins");
+ 	elwins.innerHTML = wins;
  }
- // Adds 1 to losses span tag//
+ // Adds 1 to losses span tag// also check the single quote as oppose to double quote
 
  function lossesFunction(losses) {
- 	var elosses = document.getElementById('losses');
+ 	var elosses = document.getElementById("losses");
  	elosses.innerHTML = losses;	
  }
 
@@ -47,7 +46,7 @@ var userLetter = document.getElementById("guessesSofar");
  		guessesLeft = 9;
  	}
 
- 	var elGuessesLeft = document.getElementById('guessesLeft');
+ 	var elGuessesLeft = document.getElementById("guessesLeft");
  	elGuessesLeft.innerHTML = guessesLeft;
  }
 // add +1 to wins
@@ -60,16 +59,16 @@ function addWin() {
  	losses = losses + 1;
  	lossesFunction(losses);
  }
- //onkey event triggered by pressing a letter//
+ // event triggered by pressing a letter//
 
- if(!alphabets.includes(event.key.toLowercase())) {
+ if(alphabets(event.key).toLowerCase()) {
  	return;
  }
 
  // If users letter matches psychic then add to win counter and restart guess counter.
- if (psychicLetter === even.key.toLowercase()) {
+ if (psychicLetter === event.key.toLowerCase()) {
  	alert("You Win!");
- 	userLetter.textContent = '';
+ 	userLetter.textContent = "";
  	addWin();
  	updateGuesses(true);
  }	else {
@@ -77,7 +76,6 @@ function addWin() {
  	userLetter.textContent = (userLetter.textContent.length) ? userLetter.textContent + ',' + event.key : event.key
 }	console.log("Wrong!");
 	updateGuesses();
-
 }
 
-};
+
