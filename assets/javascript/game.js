@@ -19,10 +19,28 @@ console.log(psychicLetter);
 
 //User time to choose a letter and print to guesses so far//
 
-var userLetter = document.getElementById("guessesSofar");
+var getUserLetter = function(event) {
+	console.log('event: ', event);
+	var userGuess = event.key;
 
+	//  // If users letter matches psychic then add to win counter and restart guess counter.
+	if (psychicLetter === event.key.toLowerCase()) {
+		alert("You Win!");
+		userLetter.textContent = "";
+		addWin();
+		updateGuesses(true);
+	}	else {
+		//if user letter does not = psychic letter subtract from guesses left counter.
+		userLetter.textContent = (userLetter.textContent.length) ? userLetter.textContent + ',' + event.key : event.key
+		console.log("Wrong!");
+	}
+
+	updateGuesses();
+
+	document.getElementById("guessesSofar");
+	
 //add event listener//
- document.addEventListener("keyup", userLetter, false);
+document.addEventListener("keyup", getUserLetter, false);
 
  //add +1 to wincount span tag//
  function winsFunction(wins){
@@ -61,21 +79,11 @@ function addWin() {
  }
  // event triggered by pressing a letter//
 
- if(alphabets(event.key).toLowerCase()) {
- 	return;
- }
+//  if (alphabets(event.key).toLowerCase()) {
+//  	return;
+//  }
 
- // If users letter matches psychic then add to win counter and restart guess counter.
- if (psychicLetter === event.key.toLowerCase()) {
- 	alert("You Win!");
- 	userLetter.textContent = "";
- 	addWin();
- 	updateGuesses(true);
- }	else {
- 	//if user letter does not = psychic letter subtract from guesses left counter.
- 	userLetter.textContent = (userLetter.textContent.length) ? userLetter.textContent + ',' + event.key : event.key
-}	console.log("Wrong!");
-	updateGuesses();
+
 }
 
 
